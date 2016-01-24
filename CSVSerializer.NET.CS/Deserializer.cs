@@ -27,5 +27,11 @@ namespace CSVSerializer.NET.CS
 
             return new Document(Headers, Values);
         }
+
+        public List<List<Value>> GetValues()
+        {
+
+            return new List<List<Value>>(); //temporary
+        }
     }
 }

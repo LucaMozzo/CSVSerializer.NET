@@ -10,12 +10,18 @@ namespace CSVSerializer.NET.CS
     public class Serializer
     {
         private List<List<Value>> Values;
+        private Document Document;
         private String FilePath;
         public Serializer(List<List<Value>> Values, String FilePath)
         {
             this.Values = Values;
         }
 
+        public Serializer(Document Document, String FilePath)
+        {
+            this.Document = Document;
+        }
+        // TODO: the comma appears at the end of the line, could be a problem
         public async Task<bool> Serialize()
         {
             try
@@ -24,7 +30,14 @@ namespace CSVSerializer.NET.CS
                     File.Create(FilePath);
                 using (StreamWriter sw = new StreamWriter(FilePath, false))
                 {
-                    foreach (List<Value> lv in Values)
+                    //constructor allows to input a List<List<Value>> or a Document
+                    if (Document != null)
+                    {
+                        foreach(String Header in Document.Headers)
+                            await sw.WriteAsync(String.Format("\"{0}\",", Header));
+                        
+                    }
+                    foreach (List<Value> lv in (Document != null? Document.Values : Values))
                     {
                         foreach (Value v in lv)
                         {

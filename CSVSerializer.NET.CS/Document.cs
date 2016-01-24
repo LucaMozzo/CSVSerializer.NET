@@ -9,8 +9,8 @@ namespace CSVSerializer.NET.CS
     public class Document
     {
         public List<String> Headers { get; }
-        public List<String> Values { get; }
-        public Document(List<String> Headers, List<String> Values)
+        public List<List<Value>> Values { get; }
+        public Document(List<String> Headers, List<List<Value>> Values)
         {
             this.Values = Values;
             this.Headers = Headers;
