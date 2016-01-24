@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace CSVSerializer.NET.CS
 {
-    internal class Value
+    public class Value
     {
-        private Type Type;
+        internal Type Type { get; }
         private object value;
 
         public Value(int v)
@@ -26,7 +26,7 @@ namespace CSVSerializer.NET.CS
             value = v;
             Type = typeof(String);
         }
-        public Type getValue()
+        public Type GetValue()
         {
             return (Type) value;
         }
