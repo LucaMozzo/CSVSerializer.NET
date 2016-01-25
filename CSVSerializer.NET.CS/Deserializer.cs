@@ -11,15 +11,16 @@ namespace CSVSerializer.NET.CS
     {
         private List<String> Headers;
         private List<Row> Rows;
-        private String FilePath;
+        private StreamReader File;
 
         public Deserializer(String FilePath)
         {
+            File = new StreamReader(FilePath);
 
         }
-        public Deserializer(Stream File)
+        public Deserializer(byte[] buffer)
         {
-
+            this.File = new StreamReader(new MemoryStream(buffer));
         }
 
         public Document Deserialize()
@@ -28,10 +29,10 @@ namespace CSVSerializer.NET.CS
             return new Document(Headers, Rows);
         }
 
-        public List<List<Value>> GetValues()
+        public List<Row> GetValues()
         {
 
-            return new List<List<Value>>(); //temporary
+            return new List<Row>(); //temporary
         }
     }
 }

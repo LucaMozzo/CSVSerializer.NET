@@ -15,13 +15,15 @@ namespace CSVSerializer.NET.CS
         public Serializer(List<Row> Rows, String FilePath)
         {
             this.Rows = Rows;
+            this.FilePath = FilePath;
         }
 
         public Serializer(Document Document, String FilePath)
         {
             this.Document = Document;
+            this.FilePath = FilePath;
         }
-        // TODO: the comma appears at the end of the line, could be a problem
+        // TODO: comma appears at the end of the line, could be a problem
         public async Task<bool> Serialize()
         {
             try
