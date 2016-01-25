@@ -9,12 +9,12 @@ namespace CSVSerializer.NET.CS
 {
     public class Serializer
     {
-        private List<List<Value>> Values;
+        private List<Row> Rows;
         private Document Document;
         private String FilePath;
-        public Serializer(List<List<Value>> Values, String FilePath)
+        public Serializer(List<Row> Rows, String FilePath)
         {
-            this.Values = Values;
+            this.Rows = Rows;
         }
 
         public Serializer(Document Document, String FilePath)
@@ -37,14 +37,14 @@ namespace CSVSerializer.NET.CS
                             await sw.WriteAsync(String.Format("\"{0}\",", Header));
                         
                     }
-                    foreach (List<Value> lv in (Document != null? Document.Values : Values))
+                    foreach (Row row in (Document != null? Document.Rows : Rows))
                     {
-                        foreach (Value v in lv)
+                        foreach (Value value in row.Values)
                         {
-                            if (v.Type == typeof(String))
-                                await sw.WriteAsync(String.Format("\"{0}\",", v));
+                            if (value.Type == typeof(String))
+                                await sw.WriteAsync(String.Format("\"{0}\",", value));
                             else
-                                await sw.WriteAsync(v.ToString() + ",");
+                                await sw.WriteAsync(value.ToString() + ",");
                         }
                         await sw.WriteLineAsync(String.Empty);
                     }

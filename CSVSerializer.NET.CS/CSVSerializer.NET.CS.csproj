@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Deserializer.cs" />
+    <Compile Include="Row.cs" />
     <Compile Include="Serializer.cs" />
     <Compile Include="Document.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

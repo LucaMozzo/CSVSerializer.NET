@@ -10,7 +10,7 @@ namespace CSVSerializer.NET.CS
     public class Deserializer
     {
         private List<String> Headers;
-        private List<String> Values;
+        private List<Row> Rows;
         private String FilePath;
 
         public Deserializer(String FilePath)
@@ -25,7 +25,7 @@ namespace CSVSerializer.NET.CS
         public Document Deserialize()
         {
 
-            return new Document(Headers, Values);
+            return new Document(Headers, Rows);
         }
 
         public List<List<Value>> GetValues()

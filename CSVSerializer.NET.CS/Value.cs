@@ -30,5 +30,9 @@ namespace CSVSerializer.NET.CS
         {
             return (Type) value;
         }
+        public void UpdateValue(Value NewValue)
+        {
+            value = NewValue;
+        }
     }
 }

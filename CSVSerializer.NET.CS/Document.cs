@@ -9,10 +9,10 @@ namespace CSVSerializer.NET.CS
     public class Document
     {
         public List<String> Headers { get; }
-        public List<List<Value>> Values { get; }
-        public Document(List<String> Headers, List<List<Value>> Values)
+        public List<Row> Rows { get; }
+        public Document(List<String> Headers, List<Row> Rows)
         {
-            this.Values = Values;
+            this.Rows = Rows;
             this.Headers = Headers;
         }
 
