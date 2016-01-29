@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSVSerializer.NET.CS", "CSVSerializer.NET.CS\CSVSerializer.NET.CS.csproj", "{0C962C28-B003-49A6-8991-1E6636583EFE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSVSerializer", "CSVSerializer.NET.CS\CSVSerializer.csproj", "{0C962C28-B003-49A6-8991-1E6636583EFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.CS", "Demo.CS\Demo.CS.csproj", "{3F5E30BE-D053-4B94-A671-88CA9C0754B9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{0C962C28-B003-49A6-8991-1E6636583EFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C962C28-B003-49A6-8991-1E6636583EFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C962C28-B003-49A6-8991-1E6636583EFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F5E30BE-D053-4B94-A671-88CA9C0754B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F5E30BE-D053-4B94-A671-88CA9C0754B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F5E30BE-D053-4B94-A671-88CA9C0754B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F5E30BE-D053-4B94-A671-88CA9C0754B9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
