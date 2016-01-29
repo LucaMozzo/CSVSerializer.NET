@@ -34,5 +34,13 @@ namespace CSVSerializer.NET.CS
         {
             value = NewValue;
         }
+
+        public override string ToString()
+        {
+            if (Type == typeof(String))
+                return (String) value;
+            else
+                return base.ToString();
+        }
     }
 }
