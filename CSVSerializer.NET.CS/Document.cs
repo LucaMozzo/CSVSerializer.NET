@@ -20,9 +20,10 @@ namespace CSVSerializer.NET.CS
             Headers = new List<String>();
             Rows = new List<Row>();
         }
-        public void AddHeader(Value header)
+        public void SetHeader(Row header)
         {
-            Headers.Add(header.ToString());
+            foreach (Value v in header.Values)
+                Headers.Add(v.ToString());
         }
         public void AddRow(Row row)
         {
