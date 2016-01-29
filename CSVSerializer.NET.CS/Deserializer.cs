@@ -65,7 +65,7 @@ namespace CSVSerializer.NET.CS
                     doc.AddRow(row);
                 ++index;
             }
-            
+            return doc;
         }
 
         //returns the index of the first occurrence of the spacified element
