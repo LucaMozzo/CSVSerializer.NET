@@ -13,11 +13,22 @@ namespace CSVSerializer.NET.CS
         {
             this.Values = Values;
         }
-
+        public Row()
+        {
+            Values = new List<Value>();
+        }
+        public void AddValue(Value v)
+        {
+            Values.Add(v);
+        }
         public void UpdateValue(int Index, Value NewValue)
         {
             //delegates the Value class to update the value
-            Values[Index].UpdateValue(NewValue);
+            try
+            {
+                Values[Index].UpdateValue(NewValue);
+            }
+            catch { }
         }
     }
 }
