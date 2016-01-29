@@ -7,8 +7,8 @@
     <ProjectGuid>{0C962C28-B003-49A6-8991-1E6636583EFE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CSVSerializer.NET.CS</RootNamespace>
-    <AssemblyName>CSVSerializer.NET.CS</AssemblyName>
+    <RootNamespace>CSVSerializer</RootNamespace>
+    <AssemblyName>CSVSerializer</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
