@@ -15,7 +15,18 @@ namespace CSVSerializer.NET.CS
             this.Rows = Rows;
             this.Headers = Headers;
         }
-
-
+        public Document()
+        {
+            Headers = new List<String>();
+            Rows = new List<Row>();
+        }
+        public void AddHeader(String header)
+        {
+            Headers.Add(header);
+        }
+        public void AddRow(Row row)
+        {
+            Rows.Add(row);
+        }
     }
 }
