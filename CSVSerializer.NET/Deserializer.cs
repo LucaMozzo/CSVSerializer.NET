@@ -3,6 +3,9 @@ using System.IO;
 
 namespace CSVSerializer
 {
+    /// <summary>
+    ///  This class allows you to deserialize a CSV file or an array 
+    /// </summary>
     public class Deserializer
     {
         private StreamReader File;
@@ -31,6 +34,8 @@ namespace CSVSerializer
                     if (line[i] == '\"')
                     {
                         int closingQuoteIndex = IndexOf(line, '\"', i + 1); //copies all the stuff between the double quotes in the buffer
+                        if (closingQuoteIndex == -1)
+                            throw new CSVFileExcepion("Double quote mismatched");
                         for (int a = i + 1; a < closingQuoteIndex; a++)
                         {
                             buffer[bufferIndex] = line[a];
