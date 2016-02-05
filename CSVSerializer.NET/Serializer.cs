@@ -1,34 +1,45 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
 namespace CSVSerializer
 {
+    /// <summary>
+    /// This class allows you to Serialize a document or a list of rows
+    /// </summary>
     public class Serializer
     {
         private List<Row> Rows;
         private Document Document;
         private String FilePath;
+        /// <summary>
+        /// Constructor that requires a list of rows and the path of the file
+        /// </summary>
+        /// <param name="Rows">The body of the document</param>
+        /// <param name="FilePath">Path of the file to be serialized</param>
         public Serializer(List<Row> Rows, String FilePath)
         {
             this.Rows = Rows;
             this.FilePath = FilePath;
         }
-
+        /// <summary>
+        /// Constructor that requires a Document and the path of the file to be serialized
+        /// </summary>
+        /// <param name="Document">The document to be serialize</param>
+        /// <param name="FilePath">Path of the file to be serialized</param>
         public Serializer(Document Document, String FilePath)
         {
             this.Document = Document;
             this.FilePath = FilePath;
         }
-        
-        /*
-         * if it's a document we first add the headers, otherwise we assume that the headers are in the first row
-         */
+         /// <summary>
+         /// Serializes the specified document to the specified file path
+         /// </summary>
+         /// <returns>True if the task completes with no errors</returns>
         public async Task<bool> Serialize()
         {
+            //if it's a document we first add the headers, otherwise we assume that the headers are in the first row
             try
             {
                 if (!File.Exists(FilePath))

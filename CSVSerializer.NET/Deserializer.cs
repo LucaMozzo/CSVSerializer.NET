@@ -4,21 +4,31 @@ using System.IO;
 namespace CSVSerializer
 {
     /// <summary>
-    ///  This class allows you to deserialize a CSV file or an array 
+    ///  This class allows you to deserialize a CSV file or an array of bytes
     /// </summary>
     public class Deserializer
     {
         private StreamReader File;
-
+        /// <summary>
+        /// Constructor that requires the path of the file. It may throw a FileNotFoundException, deal with it
+        /// </summary>
+        /// <param name="FilePath">The path of the csv file</param>
         public Deserializer(String FilePath)
         {
                 File = new StreamReader(FilePath); //may throw an exception if the file is not found, to be handled by the final user
         }
+        /// <summary>
+        /// Constructor that requires the content of the file
+        /// </summary>
+        /// <param name="buffer">An array of bytes that represent the csv file</param>
         public Deserializer(byte[] buffer)
         {
             this.File = new StreamReader(new MemoryStream(buffer));
         }
-
+        /// <summary>
+        /// Deserialize the file defined in the constructor
+        /// </summary>
+        /// <returns>A Document containing the deserialized values</returns>
         public Document Deserialize()
         {
             Document doc = new Document();
