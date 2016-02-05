@@ -36,14 +36,14 @@ namespace Demo.CS
             foreach (Row r in doc.Rows)
             {
                 // 6. Loop through the values
-                foreach (Value v in r.Values)
+                foreach (Value<object> v in r.Values)
                     Console.Write(v + "\t");
                 Console.WriteLine("");
             }
 
             //Let's change some stuff...
-            doc.Rows[0].UpdateValue(0, new Value("Michael"));
-            doc.Rows[0].UpdateValue(2, new Value(64));
+            doc.Rows[0].UpdateValue(0, new Value<object>("Michael"));
+            doc.Rows[0].UpdateValue(2, new Value<object>(64));
 
             // 7. Serializer part - Create a serializer
             Serializer serializer = new Serializer(doc, "users_.csv");
