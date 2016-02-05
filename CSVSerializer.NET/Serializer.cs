@@ -57,26 +57,17 @@ namespace CSVSerializer
                                 await sw.WriteAsync(String.Format(",\"{0}\"", Header));
                             ++index;
                         }
+                        await sw.WriteAsync(sw.NewLine);
                     }
                     foreach (Row row in (Document != null? Document.Rows : Rows))
                     {
                         short index = 0;
                         foreach (Value value in row.Values)
                         {
-                            if (value.Type == typeof(String))
-                            {
-                                if (index == 0)
-                                    await sw.WriteAsync(String.Format("\"{0}\"", value));
-                                else
-                                    await sw.WriteAsync(String.Format(",\"{0}\"", value));
-                            }
+                            if (index == 0)
+                                await sw.WriteAsync(String.Format("\"{0}\"", value));
                             else
-                            {
-                                if(index == 0)
-                                    await sw.WriteAsync(value.ToString());
-                                else
-                                    await sw.WriteAsync("," + value.ToString());
-                            }
+                                await sw.WriteAsync(String.Format(",\"{0}\"", value));
                             ++index;
                         }
                         await sw.WriteLineAsync(sw.NewLine);
@@ -87,5 +78,6 @@ namespace CSVSerializer
             }
             catch { return false; }
         }
+        //TODO: call this serializeAsync and create a synchronous method as well
     }
 }
