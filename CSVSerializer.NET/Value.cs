@@ -3,62 +3,33 @@
 namespace CSVSerializer
 {
     /// <summary>
-    /// Represents a value of an implicit type
+    /// Represents a generic value of an implicit type
     /// </summary>
-    public class Value
+    public class Value<T>
     {
-        internal Type Type { get; }
+        private T type;
         private object value;
         /// <summary>
-        /// Constructor for integer values
+        /// Constructor that accepts any object
         /// </summary>
-        /// <param name="v">Integer value</param>
-        public Value(int v)
+        /// <param name="value">The value to assign to the object</param>
+        public Value(object value)
         {
-            value = v;
-            Type = typeof(int);
-        }
-        /// <summary>
-        /// Constructor for double value
-        /// </summary>
-        /// <param name="v">Double value</param>
-        public Value(double v)
-        {
-            value = v;
-            Type = typeof(double);
-        }
-        /// <summary>
-        /// Constructor for string values
-        /// </summary>
-        /// <param name="v">String value</param>
-        public Value(String v)
-        {
-            value = v;
-            Type = typeof(String);
-        }
-        /// <summary>
-        /// Constructor for specified types
-        /// </summary>
-        /// <param name="v">Value casted to any type</param>
-        /// <param name="t">Explicit type of the value</param>
-        public Value(object v, Type t)
-        {
-            Type = t;
-            value = v;
+            this.value = value;
         }
         /// <summary>
         /// Getter method for the value
         /// </summary>
         /// <returns>The actual value</returns>
-        public Type GetValue()
+        public T GetValue()
         {
-            return (Type) value;
+            return (T) value;
         }
         /// <summary>
         /// Method for updating the actual value of this Value
         /// </summary>
         /// <param name="NewValue">New value that will replace the old one</param>
-        public void UpdateValue(Value NewValue)
+        public void UpdateValue(Value<object> NewValue)
         {
             value = NewValue;
         }
@@ -68,10 +39,10 @@ namespace CSVSerializer
         /// <returns>The string representation of the object</returns>
         public override string ToString()
         {
-            if (Type == typeof(String))
-                return (String) value;
+            if (typeof(T) == typeof(String))
+                return (string)value;
             else
-                return base.ToString();
+                return Convert.ToString(value);
         }
     }
 }

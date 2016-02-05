@@ -40,7 +40,7 @@ namespace CSVSerializer
         /// <param name="header">Header of the document</param>
         public void SetHeader(Row header)
         {
-            foreach (Value v in header.Values)
+            foreach (Value<object> v in header.Values)
                 Headers.Add(v.ToString());
         }
         /// <summary>

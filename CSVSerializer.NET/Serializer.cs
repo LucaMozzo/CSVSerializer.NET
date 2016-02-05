@@ -62,7 +62,7 @@ namespace CSVSerializer
                     foreach (Row row in (Document != null? Document.Rows : Rows))
                     {
                         short index = 0;
-                        foreach (Value value in row.Values)
+                        foreach (Value<object> value in row.Values)
                         {
                             if (index == 0)
                                 await sw.WriteAsync(String.Format("\"{0}\"", value));

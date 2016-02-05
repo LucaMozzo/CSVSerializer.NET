@@ -58,7 +58,7 @@ namespace CSVSerializer
                         DumpBuffer(row, buffer);
                         buffer = new char[line.Length]; //clears the array after dumping values
                         bufferIndex = 0;
-                    }
+                    } //TODO: deal with the space
                     else
                     {
                         buffer[bufferIndex] = line[i];
@@ -82,7 +82,7 @@ namespace CSVSerializer
                 if (c != '\0')
                     tmp += c;
                 else break; //otherwise keeps looping through the empty slot of the buffer
-            Value value = new Value(tmp);
+            Value<object> value = new Value<object>(tmp);
             row.AddValue(value);
         }
 

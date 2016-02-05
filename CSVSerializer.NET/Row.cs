@@ -10,12 +10,12 @@ namespace CSVSerializer
         /// <summary>
         /// The content of the row
         /// </summary>
-        public List<Value> Values { get; }
+        public List<Value<object>> Values { get; }
         /// <summary>
         /// Constructor that requires a list of values
         /// </summary>
         /// <param name="Values">Values to be added</param>
-        public Row(List<Value> Values)
+        public Row(List<Value<object>> Values)
         {
             this.Values = Values;
         }
@@ -24,13 +24,13 @@ namespace CSVSerializer
         /// </summary>
         public Row()
         {
-            Values = new List<Value>();
+            Values = new List<Value<object>>();
         }
         /// <summary>
         /// Adds a value to the row
         /// </summary>
         /// <param name="value">Value to be added</param>
-        public void AddValue(Value value)
+        public void AddValue(Value<object> value)
         {
             Values.Add(value);
         }
@@ -39,11 +39,11 @@ namespace CSVSerializer
         /// </summary>
         /// <param name="Index">Index of the value to be updated</param>
         /// <param name="NewValue">Updated values</param>
-        public void UpdateValue(int Index, Value NewValue)
+        public void UpdateValue(int Index, Value<object> NewValue)
         {
             try
             {
-                Values[Index].UpdateValue(NewValue); //delegates the Value class to update the value
+               // Values[Index].UpdateValue(NewValue); //delegates the Value class to update the value
             }
             catch { }
         }
