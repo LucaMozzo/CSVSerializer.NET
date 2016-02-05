@@ -7,7 +7,6 @@ namespace CSVSerializer
     /// </summary>
     public class Value<T>
     {
-        private T type;
         private object value;
         /// <summary>
         /// Constructor that accepts any object
