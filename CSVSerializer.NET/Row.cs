@@ -43,7 +43,7 @@ namespace CSVSerializer
         {
             try
             {
-               // Values[Index].UpdateValue(NewValue); //delegates the Value class to update the value
+                Values[Index].UpdateValue(NewValue); //delegates the Value class to update the value
             }
             catch { }
         }
