@@ -70,7 +70,7 @@ namespace CSVSerializer
                                 await sw.WriteAsync(String.Format(",\"{0}\"", value));
                             ++index;
                         }
-                        await sw.WriteLineAsync(sw.NewLine);
+                        await sw.WriteAsync(sw.NewLine);
                     }
                     sw.Close();
                 }
