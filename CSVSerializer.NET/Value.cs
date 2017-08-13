@@ -16,6 +16,7 @@ namespace CSVSerializer
         {
             this.value = value;
         }
+
         /// <summary>
         /// Getter method for the value
         /// </summary>
@@ -24,6 +25,7 @@ namespace CSVSerializer
         {
             return (T) value;
         }
+
         /// <summary>
         /// Method for updating the actual value of this Value
         /// </summary>
@@ -32,6 +34,7 @@ namespace CSVSerializer
         {
             value = NewValue;
         }
+
         /// <summary>
         /// Override method for ToString
         /// </summary>

@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CSVFileExcepion.cs" />
+    <Compile Include="Exception.cs" />
     <Compile Include="Deserializer.cs" />
     <Compile Include="Row.cs" />
     <Compile Include="Serializer.cs" />

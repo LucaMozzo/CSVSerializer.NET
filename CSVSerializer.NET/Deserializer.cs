@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 
 namespace CSVSerializer
 {
@@ -45,7 +47,7 @@ namespace CSVSerializer
                     {
                         int closingQuoteIndex = IndexOf(line, '\"', i + 1); //copies all the stuff between the double quotes in the buffer
                         if (closingQuoteIndex == -1)
-                            throw new CSVFileExcepion("Double quote mismatched");
+                            throw new Exception("Double quote mismatched");
                         for (int a = i + 1; a < closingQuoteIndex; a++)
                         {
                             buffer[bufferIndex] = line[a];
@@ -95,6 +97,37 @@ namespace CSVSerializer
                     return i;
             }
             return -1;
+        }
+
+        /// <summary>
+        /// Tries to deserialize the document by dumping data into the given object
+        /// </summary>
+        /// <typeparam name="T">The class definition used for the results. The properties in the object must have the same name as the header
+        /// and must be public (if the header contains spaces, they will automatically be removed) and the object must have a default constructor</typeparam>
+        /// <returns>A list of objects</returns>
+        public List<T> DeserializeObject<T>() where T : new()
+        {
+            Document doc = Deserialize();
+
+            List<T> result = new List<T>();
+
+            foreach(Row r in doc.Rows)
+            {
+                T obj = new T();
+
+                for(int i = 0; i < doc.Headers.Count; ++i)
+                {
+                    PropertyInfo property = obj.GetType().GetProperty(doc.Headers[i].Replace(" ", ""));
+                    if (property == null)
+                        throw new CSVDeserializationExcepion("Public property '" + doc.Headers[i].Replace(" ", "") + "' not found in the given model");
+                    else
+                        property.SetValue(obj, r.Values[i]);
+                }
+
+                result.Add(obj);
+            }
+
+            return result;
         }
     }
 }
