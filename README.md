@@ -7,6 +7,12 @@ CSVSerializer.NET is a .NET class library to include full support for CSV in you
 This class library follows the [specifications](https://www.ietf.org/rfc/rfc4180.txt) of CSV.
 
 <h2>Getting started</h2>
+
+<h3>Installation</h3>
+**DLL:** In the release section of this Github project you can download the DLL file <br/>
+**Nuget (recommended):** Run `Install-Package CSVSerializer.Net -Version 1.0.1.1` in the Package Management Console
+
+<h3>Usage</h3>
 I created a new type, for an enhanced way to visualize things: <strong>Document</strong>. This will allow an easier organization of the document, a better encapsulation and reusability. The structure is explained in the image below.
 <img src="https://raw.githubusercontent.com/LucaMozzo/CSVSerializer.NET/master/Demo.VB/Media/Document-format.png" />
 Please bear in mind that a Header is of type Row! I kept it in a different variable inside Document to provide more customization.
