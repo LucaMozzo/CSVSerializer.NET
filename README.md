@@ -9,8 +9,8 @@ This class library follows the [specifications](https://www.ietf.org/rfc/rfc4180
 <h2>Getting started</h2>
 
 <h3>Installation</h3>
-**DLL:** In the release section of this Github project you can download the DLL file <br/>
-**Nuget (recommended):** Run `Install-Package CSVSerializer.Net -Version 1.0.1.1` in the Package Management Console
+<b>DLL:</b> In the release section of this Github project you can download the DLL file <br/>
+<b>Nuget (recommended):</b> Run <code>Install-Package CSVSerializer.Net -Version 1.0.1.1</code> in the Package Management Console
 
 <h3>Usage</h3>
 I created a new type, for an enhanced way to visualize things: <strong>Document</strong>. This will allow an easier organization of the document, a better encapsulation and reusability. The structure is explained in the image below.
