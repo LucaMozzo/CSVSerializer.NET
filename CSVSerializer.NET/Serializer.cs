@@ -117,7 +117,7 @@ namespace CSVSerializer
             }
 
             // Write headers (using the aliases)
-            var headerStr = string.Join(",", propertyNamesAliases.Select(e => e.Value.Item2)) + "\n";
+            var headerStr = string.Join(",", propertyNamesAliases.OrderBy(e => e.Key).Select(e => e.Value.Item2)) + "\n";
             var headerBytes = Encoding.UTF8.GetBytes(headerStr);
             await stream.WriteAsync(headerBytes, 0, headerBytes.Length);
 

@@ -28,6 +28,21 @@ namespace Demo.CS.Examples
                 Console.WriteLine(Encoding.UTF8.GetString(memoryStream.ToArray()));
                 Console.ReadLine();
             }
+
+            // with object mapper
+            using (MemoryStream memoryStream = new MemoryStream())
+            {
+                var mapper = new ObjectMapper<User>();
+                mapper.AddMap(u => u.Username, 1, "Name")
+                    .AddMap(u => u.Age, 0)
+                    .AddMap(u => u.Email);
+
+                Serializer serializer = new Serializer();
+                await serializer.SerializeObjects(users, memoryStream, mapper).ConfigureAwait(true);
+
+                Console.WriteLine(Encoding.UTF8.GetString(memoryStream.ToArray()));
+                Console.ReadLine();
+            }
         }
     }
 }

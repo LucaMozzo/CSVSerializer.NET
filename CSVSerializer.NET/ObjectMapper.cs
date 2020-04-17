@@ -11,7 +11,7 @@ namespace CSVSerializer
 
         public ObjectMapper<T> AddMap<TMember>(Expression<Func<T, TMember>> expression, int? index = null, string header = null)
         {
-            MemberExpression memberExpression = expression as MemberExpression;
+            MemberExpression memberExpression = expression.Body as MemberExpression;
             MemberInfo memberInfo = memberExpression.Member;
             if (memberInfo.MemberType == MemberTypes.Property)
             {
