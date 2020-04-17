@@ -76,7 +76,7 @@ namespace CSVSerializer
             }
             return doc;
         }
-        //for a better reusability I created this method to avoid redundancy
+
         private static void DumpBuffer(Row row, char[] buffer)
         {
             String tmp = "";
