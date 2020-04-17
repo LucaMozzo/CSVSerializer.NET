@@ -13,18 +13,23 @@ namespace CSVSerializer
     /// </summary>
     public class Serializer
     {
-        private List<Row> Rows;
         private Document Document;
         private String FilePath;
+
+        public Serializer()
+        {
+            // No-op
+        }
 
         /// <summary>
         /// Constructor that requires a list of rows and the path of the file
         /// </summary>
         /// <param name="Rows">The body of the document</param>
         /// <param name="FilePath">Path of the file to be serialized</param>
-        public Serializer(List<Row> Rows, String FilePath)
+        public Serializer(List<Row> Rows, string FilePath)
         {
-            this.Rows = Rows;
+            Document = new Document();
+            Document.AddRows(Rows);
             this.FilePath = FilePath;
         }
 
@@ -33,7 +38,7 @@ namespace CSVSerializer
         /// </summary>
         /// <param name="Document">The document to be serialize</param>
         /// <param name="FilePath">Path of the file to be serialized</param>
-        public Serializer(Document Document, String FilePath)
+        public Serializer(Document Document, string FilePath)
         {
             this.Document = Document;
             this.FilePath = FilePath;
@@ -45,33 +50,39 @@ namespace CSVSerializer
          /// <returns>True if the task completes with no errors</returns>
         public async Task Serialize()
         {
+            if(Document == null)
+            {
+                throw new CsvDeserializationExcepion("The inout rows or document are not set");
+            }
+
             //if it's a document we first add the headers, otherwise we assume that the headers are in the first row
             if (!File.Exists(FilePath))
                 File.Create(FilePath);
             using (StreamWriter sw = new StreamWriter(FilePath, false))
             {
                 //constructor allows to input a List<List<Value>> or a Document
-                if (Document != null)
+                if (Document.Headers.Count > 0)
                 {
                     short index = 0; //to prevent the ',' to be added at the end of the line
-                    foreach (String Header in Document.Headers) {
+                    foreach (string Header in Document.Headers) {
                         if (index == 0)
-                            await sw.WriteAsync(String.Format("\"{0}\"", Header));
+                            await sw.WriteAsync(string.Format("\"{0}\"", Header));
                         else
-                            await sw.WriteAsync(String.Format(",\"{0}\"", Header));
+                            await sw.WriteAsync(string.Format(",\"{0}\"", Header));
                         ++index;
                     }
                     await sw.WriteAsync(sw.NewLine);
                 }
-                foreach (Row row in (Document != null? Document.Rows : Rows))
+
+                foreach (Row row in Document.Rows)
                 {
                     short index = 0;
                     foreach (Value<object> value in row.Values)
                     {
                         if (index == 0)
-                            await sw.WriteAsync(String.Format("\"{0}\"", value));
+                            await sw.WriteAsync(string.Format("\"{0}\"", value));
                         else
-                            await sw.WriteAsync(String.Format(",\"{0}\"", value));
+                            await sw.WriteAsync(string.Format(",\"{0}\"", value));
                         ++index;
                     }
                     await sw.WriteAsync(sw.NewLine);
@@ -80,9 +91,16 @@ namespace CSVSerializer
             }
         }
 
-        public static async Task<Stream> SerializeObjects<T>(IEnumerable<T> objs, Stream stream, ObjectMapper<T> objectMapper = null)
+        /// <summary>
+        /// Serializes a list of objects to csv
+        /// </summary>
+        /// <typeparam name="T">The type of the object</typeparam>
+        /// <param name="objs">The list of objects to write to the stream</param>
+        /// <param name="stream">The stream onto which to write</param>
+        /// <param name="objectMapper">The property mapper for the object</param>
+        /// <returns></returns>
+        public async Task SerializeObjects<T>(IEnumerable<T> objs, Stream stream, ObjectMapper<T> objectMapper = null)
         {
-            int offset = 0;
             Dictionary<int, Tuple<string, string>> propertyNamesAliases;
 
             if (objectMapper == null)
@@ -101,8 +119,7 @@ namespace CSVSerializer
             // Write headers (using the aliases)
             var headerStr = string.Join(",", propertyNamesAliases.Select(e => e.Value.Item2)) + "\n";
             var headerBytes = Encoding.UTF8.GetBytes(headerStr);
-            await stream.WriteAsync(headerBytes, offset, headerBytes.Length);
-            offset += headerBytes.Length;
+            await stream.WriteAsync(headerBytes, 0, headerBytes.Length);
 
             // Write values
             foreach (T obj in objs)
@@ -119,18 +136,17 @@ namespace CSVSerializer
                 }
 
                 // Sort by index
-                var orderedValues = values.OrderBy(v => v.Item1);
+                var orderedValues = values.OrderBy(v => v.Item1).Select(v => v.Item2);
 
                 var row = string.Join(",", orderedValues) + "\n";
                 var rowBytes = Encoding.UTF8.GetBytes(row);
-                await stream.WriteAsync(rowBytes, offset, rowBytes.Length);
-                offset += rowBytes.Length;
+                await stream.WriteAsync(rowBytes, 0, rowBytes.Length);
             }
 
-            return stream;
+            await stream.FlushAsync();
         }
 
-        private static string GetString(object obj)
+        private string GetString(object obj)
         {
             string output = obj.ToString();
             if (output.Contains(' '))

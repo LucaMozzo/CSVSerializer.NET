@@ -44,10 +44,7 @@ exitProgram: Console.ReadLine()
     End Sub
     'we need to create another method because Main can't be async
     Private Async Sub Serialize(ByVal s As Serializer)
-        If Await s.Serialize() Then
-            Console.WriteLine("Successfully serialized")
-        Else
-            Console.WriteLine("An error has occurred")
-        End If
+        Await s.Serialize()
+        Console.WriteLine("Successfully serialized")
     End Sub
 End Module

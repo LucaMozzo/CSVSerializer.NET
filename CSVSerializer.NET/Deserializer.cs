@@ -119,7 +119,7 @@ namespace CSVSerializer
                 {
                     PropertyInfo property = obj.GetType().GetProperty(doc.Headers[i].Replace(" ", ""));
                     if (property == null)
-                        throw new CSVDeserializationExcepion("Public property '" + doc.Headers[i].Replace(" ", "") + "' not found in the given model");
+                        throw new CsvDeserializationExcepion("Public property '" + doc.Headers[i].Replace(" ", "") + "' not found in the given model");
                     else
                         property.SetValue(obj, Convert.ChangeType(r.Values[i].ToString(), property.PropertyType));
                 }

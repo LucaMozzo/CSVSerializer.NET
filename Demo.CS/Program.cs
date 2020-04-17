@@ -1,6 +1,4 @@
 ﻿using System;
-using System.IO;
-using CSVSerializer; //import the library, also from Project > Add Reference... > Choose the DLL file
 using Demo.CS.Examples;
 
 namespace Demo.CS
@@ -13,8 +11,11 @@ namespace Demo.CS
     {
         static async System.Threading.Tasks.Task Main(string[] args)
         {
-            await SimpleSerialization.Serialize();
+            Console.WriteLine("Simple serialization:");
+            await SimpleSerialization.Serialize().ConfigureAwait(true);
 
+            Console.WriteLine("\nObject serialization:");
+            await SerializeObject.Serialize().ConfigureAwait(true);
         }
     }
 }

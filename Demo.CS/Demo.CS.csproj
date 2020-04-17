@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Examples\SerializeObject.cs" />
     <Compile Include="Examples\SimpleSerialization.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Program.cs" />
