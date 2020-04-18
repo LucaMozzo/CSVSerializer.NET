@@ -14,6 +14,7 @@ This class library follows the [specifications](https://www.ietf.org/rfc/rfc4180
 
 <h3>Object serialization example</h3>
 Here's an example of how to serialize a list of objects in C# with custom header and ordering of columns
+
 ```
 using (MemoryStream memoryStream = new MemoryStream())
 {
@@ -50,4 +51,4 @@ Please the following procedures before using the code from the demos I provided.
 </ul>
 
 <h2>Building the NuGet package</h2>
-Rebuild the project using the Release configutation, then in the `CSVSerializer.NET` folder run `nuget pack .\CSVSerializer.nuspec`
+Rebuild the project using the Release configutation, then in the <code>CSVSerializer.NET</code> folder run <code>nuget pack .\CSVSerializer.nuspec</code>
