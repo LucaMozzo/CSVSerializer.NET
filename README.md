@@ -10,7 +10,7 @@ This class library follows the [specifications](https://www.ietf.org/rfc/rfc4180
 
 <h3>Installation</h3>
 <b>DLL:</b> In the release section of this Github project you can download the DLL file <br/>
-<b>Nuget (recommended):</b> Run <code>Install-Package CSVSerializer.Net -Version 1.1.0.1</code> in the Package Management Console
+<b>Nuget (recommended):</b> Run <code>Install-Package CSVSerializer.Net -Version 1.1.0.2</code> in the Package Management Console
 
 <h3>Object serialization example</h3>
 Here's an example of how to serialize a list of objects in C# with custom header and ordering of columns

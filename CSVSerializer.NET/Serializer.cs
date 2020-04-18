@@ -148,6 +148,9 @@ namespace CSVSerializer
 
         private string GetString(object obj)
         {
+            if (obj == null)
+                return "";
+
             string output = obj.ToString();
             if (output.Contains(' '))
             {
