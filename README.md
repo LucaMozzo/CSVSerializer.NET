@@ -29,7 +29,7 @@ using (MemoryStream memoryStream = new MemoryStream())
 }
 ```
 
-<h3>Broad usage</h3>
+<h3>Legacy functions usage</h3>
 I created a new type, for an enhanced way to visualize things: <strong>Document</strong>. This will allow an easier organization of the document, a better encapsulation and reusability. The structure is explained in the image below.
 <img src="https://raw.githubusercontent.com/LucaMozzo/CSVSerializer.NET/master/ReadmeImages/Document-format.png" />
 Please bear in mind that a Header is of type Row! I kept it in a different variable inside Document to provide more customization.
@@ -50,3 +50,6 @@ Please the following procedures before using the code from the demos I provided.
 <ul>
 <li>.NET Framework 4.5 Application</li>
 </ul>
+
+<h2>Building the NuGet package</h2>
+Rebuild the project using the Release configutation, then in the `CSVSerializer.NET` folder run `nuget pack .\CSVSerializer.nuspec`

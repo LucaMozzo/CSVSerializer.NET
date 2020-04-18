@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>CSVSerializer.Net</id>
-    <version>1.0.1.1</version>
+    <version>1.1.0.0</version>
     <authors>Luca Mozzo</authors>
     <owners>lucamozzo</owners>
     <license type="file">License.md</license>
@@ -11,10 +11,14 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>A simple library for CSV file serialization and deserialization</description>
     <releaseNotes>First release</releaseNotes>
-    <copyright>Copyright ©2018 Luca Mozzo</copyright>
+    <copyright>Copyright © 2020 Luca Mozzo</copyright>
     <tags>csv serializer deserializer</tags>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System.Net" targetFramework="net45" />
+    </frameworkAssemblies>
   </metadata>
-        <files>
+    <files>
       <file src="..\License.md" target="" />
+      <file src="bin\Release\*.dll" target="lib" />
   </files>
 </package>
