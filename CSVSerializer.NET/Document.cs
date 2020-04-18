@@ -35,7 +35,7 @@ namespace CSVSerializer
             Rows = new List<Row>();
         }
         /// <summary>
-        /// Allows to set the header for the document
+        /// Set the header for the document
         /// </summary>
         /// <param name="header">Header of the document</param>
         public void SetHeader(Row header)
@@ -44,12 +44,21 @@ namespace CSVSerializer
                 Headers.Add(v.ToString());
         }
         /// <summary>
-        /// Allows to add a row to the document
+        /// Add a row to the document
         /// </summary>
         /// <param name="row">The row to be added</param>
         public void AddRow(Row row)
         {
             Rows.Add(row);
+        }
+
+        /// <summary>
+        /// Add a collection of rows to the document
+        /// </summary>
+        /// <param name="rows">The collection of rows</param>
+        public void AddRows(IEnumerable<Row> rows)
+        {
+            Rows.AddRange(rows);
         }
         //TODO: Add indexed and allow more manipulation of the document, including removing rows and setting header from a List<String>
     }

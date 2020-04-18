@@ -7,12 +7,12 @@ namespace CSVSerializer
     /// </summary>
     public class Value<T>
     {
-        private object value;
+        private T value;
         /// <summary>
         /// Constructor that accepts any object
         /// </summary>
         /// <param name="value">The value to assign to the object</param>
-        public Value(object value)
+        public Value(T value)
         {
             this.value = value;
         }
@@ -23,16 +23,16 @@ namespace CSVSerializer
         /// <returns>The actual value</returns>
         public T GetValue()
         {
-            return (T) value;
+            return value;
         }
 
         /// <summary>
         /// Method for updating the actual value of this Value
         /// </summary>
-        /// <param name="NewValue">New value that will replace the old one</param>
-        public void UpdateValue(Value<object> NewValue)
+        /// <param name="newValue">New value that will replace the old one</param>
+        public void UpdateValue(T newValue)
         {
-            value = NewValue;
+            value = newValue;
         }
 
         /// <summary>
@@ -41,10 +41,7 @@ namespace CSVSerializer
         /// <returns>The string representation of the object</returns>
         public override string ToString()
         {
-            if (typeof(T) == typeof(String))
-                return (string)value;
-            else
-                return Convert.ToString(value);
+            return Convert.ToString(value);
         }
     }
 }
