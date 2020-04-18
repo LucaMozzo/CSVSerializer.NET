@@ -5,6 +5,6 @@
         SimpleSerialization.Serialize().Wait()
 
         Console.WriteLine("Object serialization")
-        SimpleSerialization.Serialize().Wait()
+        SerializeObject.Serialize().Wait()
     End Sub
 End Module
