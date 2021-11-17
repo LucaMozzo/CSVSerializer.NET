@@ -52,7 +52,7 @@ namespace CSVSerializer
         {
             if(Document == null)
             {
-                throw new CsvDeserializationExcepion("The inout rows or document are not set");
+                throw new CsvDeserializationExcepion("The input rows or document are not set");
             }
 
             //if it's a document we first add the headers, otherwise we assume that the headers are in the first row
@@ -102,18 +102,21 @@ namespace CSVSerializer
         public async Task SerializeObjects<T>(IEnumerable<T> objs, Stream stream, ObjectMapper<T> objectMapper = null)
         {
             Dictionary<int, Tuple<string, string>> propertyNamesAliases;
+            Dictionary<string, Delegate> propertyValueTransformers;
 
             if (objectMapper == null)
             {
                 // Resolve all the properties
                 PropertyInfo[] properties = typeof(T).GetProperties();
                 int index = 0;
-                propertyNamesAliases = properties.ToDictionary(p => index++, p => new Tuple<string, string>(GetString(p.Name), GetString(p.Name)));  
+                propertyNamesAliases = properties.ToDictionary(p => index++, p => new Tuple<string, string>(GetString(p.Name), GetString(p.Name)));
+                propertyValueTransformers = new Dictionary<string, Delegate>();
             }
             else
             {
                 // Get the relevant fields
                 propertyNamesAliases = objectMapper.GetPropertyMap();
+                propertyValueTransformers = objectMapper.GetTransformFunctions();
             }
 
             // Write headers (using the aliases)
@@ -130,8 +133,16 @@ namespace CSVSerializer
                 {
                     var currentPropName = enumerator.Current.Value.Item1;
                     var currentPropIndex = enumerator.Current.Key;
-                    var currentPropValue = GetString(typeof(T).GetProperty(currentPropName).GetValue(obj, null));
-                    var valueWithIndex = new Tuple<int, string>(currentPropIndex, currentPropValue);
+                    var currentPropValue = typeof(T).GetProperty(currentPropName).GetValue(obj, null);
+
+                    // if value transformer exists, apply transformation
+                    if (propertyValueTransformers.ContainsKey(enumerator.Current.Value.Item2))
+                    {
+                        currentPropValue = propertyValueTransformers[enumerator.Current.Value.Item2].DynamicInvoke(currentPropValue);
+                    }
+
+                    var currentPropValueStr = GetString(currentPropValue);
+                    var valueWithIndex = new Tuple<int, string>(currentPropIndex, currentPropValueStr);
                     values.Add(valueWithIndex);
                 }
 
@@ -152,7 +163,7 @@ namespace CSVSerializer
                 return "";
 
             string output = obj.ToString();
-            if (output.Contains(' '))
+            if (output.Contains(' ') || output.Contains(','))
             {
                 output = string.Format($"\"{output}\"");
             }

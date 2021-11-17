@@ -15,8 +15,8 @@ namespace Demo.CS.Examples
             // create some data
             List<User> users = new List<User>()
             {
-                new User { Username = "super user", Email = "superuser@example.com", Age = 54 },
-                new User { Username = "user", Email = "user@example.com", Age = 20 }
+                new User { Username = "super user", Email = "superuser@example.com", Age = 54, DateOfBirth = DateTime.UtcNow.AddYears(-50) },
+                new User { Username = "user", Email = "user@example.com", Age = 20, DateOfBirth = DateTime.UtcNow.AddYears(-20) }
             };
 
             // without object mapper
@@ -35,7 +35,8 @@ namespace Demo.CS.Examples
                 var mapper = new ObjectMapper<User>();
                 mapper.AddMap(u => u.Username, 1, "Name")
                     .AddMap(u => u.Age, 0)
-                    .AddMap(u => u.Email);
+                    .AddMap(u => u.Email)
+                    .AddMap(u => u.DateOfBirth, header: "Date of birth", transformFunction: dob => dob.ToString("yyyy-mm-dd"));
 
                 Serializer serializer = new Serializer();
                 await serializer.SerializeObjects(users, memoryStream, mapper).ConfigureAwait(true);
