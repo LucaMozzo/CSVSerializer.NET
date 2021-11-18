@@ -1,6 +1,6 @@
 ﻿Imports System.IO
 Imports System.Text
-Imports CSVSerializer
+Imports CsvSerializer
 
 Public Class SerializeObject
     Public Shared Async Function Serialize() As Task

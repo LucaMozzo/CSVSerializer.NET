@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.CS", "Demo.CS\Demo.CS.csproj", "{3F5E30BE-D053-4B94-A671-88CA9C0754B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSVSerializer", "CSVSerializer.NET\CSVSerializer.csproj", "{0C962C28-B003-49A6-8991-1E6636583EFE}"
-EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Demo.VB", "Demo.VB\Demo.VB.vbproj", "{E3A91926-2FAF-4580-81AB-67C2D864CCE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CsvSerializerDotNet", "CsvSerializerDotNet\CsvSerializerDotNet.csproj", "{AC56ADB2-F6DF-4C30-9F8C-2ECA2EF43A4A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,19 +19,20 @@ Global
 		{3F5E30BE-D053-4B94-A671-88CA9C0754B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F5E30BE-D053-4B94-A671-88CA9C0754B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F5E30BE-D053-4B94-A671-88CA9C0754B9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0C962C28-B003-49A6-8991-1E6636583EFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0C962C28-B003-49A6-8991-1E6636583EFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0C962C28-B003-49A6-8991-1E6636583EFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0C962C28-B003-49A6-8991-1E6636583EFE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E3A91926-2FAF-4580-81AB-67C2D864CCE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E3A91926-2FAF-4580-81AB-67C2D864CCE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E3A91926-2FAF-4580-81AB-67C2D864CCE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E3A91926-2FAF-4580-81AB-67C2D864CCE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC56ADB2-F6DF-4C30-9F8C-2ECA2EF43A4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC56ADB2-F6DF-4C30-9F8C-2ECA2EF43A4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC56ADB2-F6DF-4C30-9F8C-2ECA2EF43A4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC56ADB2-F6DF-4C30-9F8C-2ECA2EF43A4A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8;packages\EnterpriseLibrary.TransientFaultHandling.Data.6.0.1304.1\lib\NET45
+		SolutionGuid = {E0A236A4-35D6-431E-8011-E50A846BEA2A}
 	EndGlobalSection
 EndGlobal

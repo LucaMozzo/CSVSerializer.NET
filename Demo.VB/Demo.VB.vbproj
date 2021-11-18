@@ -121,12 +121,11 @@
     <None Include="users.csv" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CSVSerializer.NET\CSVSerializer.csproj">
-      <Project>{0c962c28-b003-49a6-8991-1e6636583efe}</Project>
-      <Name>CSVSerializer</Name>
+    <ProjectReference Include="..\CsvSerializerDotNet\CsvSerializerDotNet.csproj">
+      <Project>{ac56adb2-f6df-4c30-9f8c-2eca2ef43a4a}</Project>
+      <Name>CsvSerializerDotNet</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
