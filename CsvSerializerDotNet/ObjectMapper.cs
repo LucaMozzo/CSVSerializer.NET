@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Reflection;
 
-namespace CSVSerializer
+namespace CsvSerializer
 {
     public class ObjectMapper<T>
     {

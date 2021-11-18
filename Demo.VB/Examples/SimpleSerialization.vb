@@ -1,5 +1,5 @@
 ﻿Imports System.Text
-Imports CSVSerializer
+Imports CsvSerializer
 
 Public Class SimpleSerialization
 

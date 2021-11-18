@@ -1,6 +1,6 @@
 ﻿Imports System.IO
 Imports System.Text
-Imports CSVSerializer
+Imports CsvSerializer
 
 Public Class SerializeObject
     Public Shared Async Function Serialize() As Task
@@ -27,6 +27,7 @@ Public Class SerializeObject
                 .AddMap(Function(u) u.Username, 1, "Name")
                 .AddMap(Function(u) u.Age, 0)
                 .AddMap(Function(u) u.Email)
+                .AddMap(Function(u) u.DateOFBirth, header:="Date of birth", transformFunction:=Function(dob) dob.ToString("yyyy-mm-dd"))
             End With
 
             Dim serializer = New Serializer()

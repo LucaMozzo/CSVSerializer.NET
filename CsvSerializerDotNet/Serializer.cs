@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Linq;
 
-namespace CSVSerializer
+namespace CsvSerializer
 {
     /// <summary>
     /// This class allows you to Serialize a document or a list of rows
@@ -26,6 +26,7 @@ namespace CSVSerializer
         /// </summary>
         /// <param name="Rows">The body of the document</param>
         /// <param name="FilePath">Path of the file to be serialized</param>
+        [Obsolete]
         public Serializer(List<Row> Rows, string FilePath)
         {
             Document = new Document();
@@ -38,19 +39,21 @@ namespace CSVSerializer
         /// </summary>
         /// <param name="Document">The document to be serialize</param>
         /// <param name="FilePath">Path of the file to be serialized</param>
+        [Obsolete]
         public Serializer(Document Document, string FilePath)
         {
             this.Document = Document;
             this.FilePath = FilePath;
         }
 
-         /// <summary>
-         /// Serializes the specified document to the specified file path
-         /// </summary>
-         /// <returns>True if the task completes with no errors</returns>
+        /// <summary>
+        /// Serializes the specified document to the specified file path
+        /// </summary>
+        /// <returns>True if the task completes with no errors</returns>
+        [Obsolete]
         public async Task Serialize()
         {
-            if(Document == null)
+            if (Document == null)
             {
                 throw new CsvDeserializationExcepion("The input rows or document are not set");
             }
