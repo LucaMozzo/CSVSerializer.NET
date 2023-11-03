@@ -134,7 +134,10 @@ namespace CsvSerializer
                     if (property == null)
                         throw new CsvDeserializationExcepion("Public property '" + doc.Headers[i].Replace(" ", "") + "' not found in the given model");
                     else
-                        property.SetValue(obj, Convert.ChangeType(r.Values[i].ToString(), property.PropertyType));
+                    {
+                        Type propertyType = Nullable.GetUnderlyingType(property.PropertyType) ?? property.PropertyType;
+                        property.SetValue(obj, Convert.ChangeType(r.Values[i].ToString(), propertyType));
+                    }
                 }
 
                 result.Add(obj);
